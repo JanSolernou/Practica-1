@@ -1,7 +1,7 @@
 
 var numFiles = 2;
 var numColumnes = 2;
-var nomImatge = "img-2";
+var nomImatge = "img-5";
 var extImatge = ".jpg";
 
 // comença el programa
@@ -11,7 +11,18 @@ $(document).ready(function(){
     //Menú inicial
     /**TASCA *****************************
     * Addicional.- codi del menú que permet escollir imatges i/o el número de peces**/
-    
+
+    $("img").on("click",function(){
+        nomImatge = $(this).attr("id");
+    });
+
+    $("#files").on("input", function() {
+        numFiles=$(this).val();
+    });
+    $("#columnes").on("input", function() {
+        numColumnes=$(this).val();
+    });
+  
 
     /*****************************************************************/
     
@@ -21,6 +32,7 @@ $(document).ready(function(){
     $("#jugar").on("click",function(){
         creaPuzzle();
         $("#form-joc").show();
+        $("#form-menu").hide();
         $(".peca")
         .mousedown(function(){
             zIndexPeca = $(this).css("z-index");
@@ -33,6 +45,8 @@ $(document).ready(function(){
             * i la posició correcte és inferior a una 
             * distància determinada
             */           
+
+
             posicionaPeca($(this));
             /**
             * puzzleResolt revisa si totes les peces
@@ -147,7 +161,7 @@ function posicionaPeca(peca){
     ampladaPeca = Math.floor($("#p-"+nomImatge).width()/numColumnes);
     alcadaPeca = Math.floor($("#p-"+nomImatge).height()/numFiles);
     posicioPecaCorrecte = {top: $(peca).attr("id").charAt(1)*alcadaPeca ,left: $(peca).attr("id").charAt(3)*ampladaPeca};
-     
+
     if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
         /**TASCA *****************************
         * 2.- Si la distancia és dins del marge determinat
