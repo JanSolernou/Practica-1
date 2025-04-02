@@ -13,8 +13,6 @@ $(document).ready(function(){
     * Addicional.- codi del menú que permet escollir imatges i/o el número de peces**/
     
 
-
-
     /*****************************************************************/
     
       
@@ -22,6 +20,7 @@ $(document).ready(function(){
     //Comença el joc
     $("#jugar").on("click",function(){
         creaPuzzle();
+        $("#form-joc").show();
         $(".peca")
         .mousedown(function(){
             zIndexPeca = $(this).css("z-index");
@@ -140,13 +139,15 @@ function setImatgePosicioPeces(){
 function posicionaPeca(peca){
    
     let posicioPeca = peca.position();
+    let posicioPecaCorrecte = {};
     /**TASCA *****************************
     * 1.- Identifica la peça pel seu id (fxcy) i en calcula la
     * seva posició correcte  (posicioPecaCorrecte) 
-    * 
-    *  
     */ 
-    
+    ampladaPeca = Math.floor($("#p-"+nomImatge).width()/numColumnes);
+    alcadaPeca = Math.floor($("#p-"+nomImatge).height()/numFiles);
+    posicioPecaCorrecte = {top: $(peca).attr("id").charAt(1)*alcadaPeca ,left: $(peca).attr("id").charAt(3)*ampladaPeca};
+     
     if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
         /**TASCA *****************************
         * 2.- Si la distancia és dins del marge determinat
