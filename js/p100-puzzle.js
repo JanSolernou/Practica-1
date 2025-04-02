@@ -1,7 +1,7 @@
 
 var numFiles = 2;
 var numColumnes = 2;
-var nomImatge = "img-2";
+var nomImatge = "img-5";
 var extImatge = ".jpg";
 
 // comença el programa
@@ -11,7 +11,18 @@ $(document).ready(function(){
     //Menú inicial
     /**TASCA *****************************
     * Addicional.- codi del menú que permet escollir imatges i/o el número de peces**/
-    
+
+    $("img").on("click",function(){
+        nomImatge = $(this).attr("id");
+    });
+
+    $("#files").on("input", function() {
+        numFiles=$(this).val();
+    });
+    $("#columnes").on("input", function() {
+        numColumnes=$(this).val();
+    });
+  
 
 
 
@@ -22,6 +33,8 @@ $(document).ready(function(){
     //Comença el joc
     $("#jugar").on("click",function(){
         creaPuzzle();
+        $("#form-joc").show();
+        $("#form-menu").hide();
         $(".peca")
         .mousedown(function(){
             zIndexPeca = $(this).css("z-index");
@@ -34,6 +47,8 @@ $(document).ready(function(){
             * i la posició correcte és inferior a una 
             * distància determinada
             */           
+
+
             posicionaPeca($(this));
             /**
             * puzzleResolt revisa si totes les peces
