@@ -186,6 +186,8 @@ function resolPuzzle(){
     * seva posició correcte, resolent el puzle
     *  
     */ 
+   console.log($(".peca")[0].id);
+   $(".peca")[tmp].id;
 }
 /**
 * Revisa si totes les peces son al seu lloc
