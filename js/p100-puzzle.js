@@ -158,10 +158,14 @@ function posicionaPeca(peca){
     * 1.- Identifica la peça pel seu id (fxcy) i en calcula la
     * seva posició correcte  (posicioPecaCorrecte) 
     */ 
+
     ampladaPeca = Math.floor($("#p-"+nomImatge).width()/numColumnes);
     alcadaPeca = Math.floor($("#p-"+nomImatge).height()/numFiles);
     posicioPecaCorrecte = {top: $(peca).attr("id").charAt(1)*alcadaPeca ,left: $(peca).attr("id").charAt(3)*ampladaPeca};
-
+    
+    
+    console.log("posicioPecaCorrecte",posicioPecaCorrecte);
+    console.log(distanciaDosPunts(posicioPeca, posicioPecaCorrecte));
     if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
         /**TASCA *****************************
         * 2.- Si la distancia és dins del marge determinat
@@ -222,5 +226,10 @@ function distanciaDosPunts(puntA, puntB){
     * a la lliçó 5: Col·lisions  dels apunts
     *  
     */ 
+
+
+   let dx = puntB.top - puntA.top;
+   let dy = puntB.left - puntA.left;
+   return Math.sqrt(dx * dx + dy * dy)
 }
 
