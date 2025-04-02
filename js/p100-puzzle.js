@@ -161,6 +161,9 @@ function posicionaPeca(peca){
     * 
     *  
     */ 
+
+    console.log("posicioPeca: ", posicioPeca);
+    console.log(peca.attr("id").substr(2,2));
     
     if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
         /**TASCA *****************************
@@ -220,5 +223,9 @@ function distanciaDosPunts(puntA, puntB){
     * a la lliçó 5: Col·lisions  dels apunts
     *  
     */ 
+
+   let dx = puntB.x - puntA.x;
+   let dy = puntB.y - puntA.y;
+   return Math.sqrt(dx * dx + dy * dy)
 }
 
