@@ -174,6 +174,7 @@ function posicionaPeca(peca){
         *  La peça ja no és podrà tornar a moure
         *  
         */ 
+        peca.css({top: posicioPecaCorrecte.top, left: posicioPecaCorrecte.left, position:'absolute'});
     }
 
 }
