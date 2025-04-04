@@ -166,7 +166,7 @@ function posicionaPeca(peca){
     
     console.log("posicioPecaCorrecte",posicioPecaCorrecte);
     console.log(distanciaDosPunts(posicioPeca, posicioPecaCorrecte));
-    if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
+    if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<40){      
         /**TASCA *****************************
         * 2.- Si la distancia és dins del marge determinat
         * mou la peça a la seva posició correcta
@@ -174,7 +174,8 @@ function posicionaPeca(peca){
         *  La peça ja no és podrà tornar a moure
         *  
         */ 
-        peca.css({top: posicioPecaCorrecte.top, left: posicioPecaCorrecte.left, position:'absolute'});
+        peca.css({top: posicioPecaCorrecte.top, left: posicioPecaCorrecte.left, position:'absolute', zIndex: -1});
+        peca.draggable("disable");
     }
 
 }
@@ -191,8 +192,7 @@ function resolPuzzle(){
     * seva posició correcte, resolent el puzle
     *  
     */ 
-   console.log($(".peca")[0].id);
-   $(".peca")[tmp].id;
+   
 }
 /**
 * Revisa si totes les peces son al seu lloc
@@ -206,7 +206,13 @@ function puzzleResolt(){
     * En cas que totes les peces siguin a la seva posició 
     * correcte, retorna cert
     *  
-    */ 
+    */
+   
+    console.log($(".peca"));
+
+   for (let i = 0; i < $(".peca").length; i++){
+    
+   }
 	
 }
 
