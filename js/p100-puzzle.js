@@ -30,6 +30,8 @@ $(document).ready(function () {
 
     //Comença el joc
     $("#jugar").on("click", function () {
+        $(".audio").attr("src","./audio/"+nomImatge+".mp3")
+        $(".audio")[0].play();
         creaPuzzle();
         $("#form-joc").show();
         $("#form-menu").hide();
@@ -58,6 +60,8 @@ $(document).ready(function () {
                     * 6.- Codi que mostra la felicitació si puzzleResolt = true
                     * És valora alguna animació o efecte
                     */
+                    $(".audio").attr("src","./audio/win.mp3");
+                    $(".audio")[0].play();
 
                     $("#felicitacio").show();
 
@@ -194,6 +198,8 @@ function posicionaPeca(peca) {
         *  La peça ja no és podrà tornar a moure
         *  
         */
+       
+        $(".click")[0].play();
         peca.css({ top: posicioPecaCorrecte.top, left: posicioPecaCorrecte.left, position: 'absolute', zIndex: -1 });
         peca.draggable("disable");
     }
@@ -283,3 +289,15 @@ function distanciaDosPunts(puntA, puntB) {
     return Math.sqrt(dx * dx + dy * dy)
 }
 
+
+$("#nouPuzzle").on("click", function () {
+    $(".audio")[0].pause();
+    $("#form-joc").hide();
+    $("#form-menu").show();
+})
+
+$("#volumen").change(function (e) { 
+   
+$('.audio')[0].volume=this.value;
+    
+});
